@@ -9,6 +9,7 @@ async function main() {
   const body = await fs.readFile(file);
 
   const resp = await fetch(upload_to, {
+    method: "POST",
     headers: {
       "openid-token": id_token,
     },
