@@ -1,0 +1,14 @@
+name: Godsvagn upload
+description: Upload a debfile to godsvagn
+
+inputs:
+  file: # id of input
+    description: Files to upload
+    required: true
+  upload_url: # id of input
+    description: Where to upload said files
+    required: true
+
+runs:
+  using: node20
+  main: action.js
