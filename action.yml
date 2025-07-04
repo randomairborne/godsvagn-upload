@@ -2,12 +2,13 @@ name: Godsvagn upload
 description: Upload a debfile to godsvagn
 
 inputs:
-  file: # id of input
+  file:
     description: Files to upload
-    required: true
-  upload_url: # id of input
+    required: false
+  upload_url: # required if file is specified
     description: Where to upload said files
-    required: true
+  regenerate_url:
+    description: Regenerate url to call
 
 runs:
   using: node20
