@@ -27263,7 +27263,6 @@ function requireSrc () {
 	  const file = core.getInput("file");
 	  const upload_to = core.getInput("upload_url");
 	  const regenerate_with = core.getInput("regenerate_url");
-	  const id_token = await core.getIDToken();
 
 	  if (file) {
 	    if (!upload_to) {
@@ -27273,7 +27272,7 @@ function requireSrc () {
 	    const upload = await fetch(upload_to, {
 	      method: "POST",
 	      headers: {
-	        "openid-token": id_token,
+	        "openid-token": await core.getIDToken(),
 	      },
 	      body: body,
 	    });
@@ -27288,7 +27287,7 @@ function requireSrc () {
 	    const regen = await fetch(regenerate_with, {
 	      method: "POST",
 	      headers: {
-	        "openid-token": id_token_a,
+	        "openid-token": await core.getIDToken(),
 	      },
 	    });
 	    if (regen.status !== 200) {

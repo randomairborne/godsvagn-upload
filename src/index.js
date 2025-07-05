@@ -5,7 +5,6 @@ async function main() {
   const file = core.getInput("file");
   const upload_to = core.getInput("upload_url");
   const regenerate_with = core.getInput("regenerate_url");
-  const id_token = await core.getIDToken();
 
   if (file) {
     if (!upload_to) {
@@ -15,7 +14,7 @@ async function main() {
     const upload = await fetch(upload_to, {
       method: "POST",
       headers: {
-        "openid-token": id_token,
+        "openid-token": await core.getIDToken(),
       },
       body: body,
     });
@@ -30,7 +29,7 @@ async function main() {
     const regen = await fetch(regenerate_with, {
       method: "POST",
       headers: {
-        "openid-token": id_token_a,
+        "openid-token": await core.getIDToken(),
       },
     });
     if (regen.status !== 200) {
